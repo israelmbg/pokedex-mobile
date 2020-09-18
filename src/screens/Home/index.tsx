@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Text, Image } from 'react-native';
 
 import { Container, Content, PokemonName, ImageContainer, PokemonImage } from './styles';
 
@@ -15,7 +14,6 @@ const Home: React.FC = () => {
 
       setPokemonName(response.data.name)
       setPokemonImageUrl(`${response.data.sprites.front_default}`)
-      console.log(response.data)
     }
 
     fetchPokemonData('pikachu')
@@ -26,11 +24,10 @@ const Home: React.FC = () => {
       <Container>
         <Content>
           <ImageContainer>
-            <PokemonImage source={{ uri: pokemonImageUrl }}/>
+            <PokemonImage source={ pokemonImageUrl ? { uri: pokemonImageUrl } : {}}/>
           </ImageContainer>
         <PokemonName>{pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1)}</PokemonName>
         </Content>
-
       </Container>
     </>
   );
